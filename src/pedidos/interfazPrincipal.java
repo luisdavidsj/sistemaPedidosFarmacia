@@ -226,6 +226,11 @@ public class interfazPrincipal extends javax.swing.JFrame {
 
         chkPrincipal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chkPrincipal.setText("Principal");
+        chkPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkPrincipalActionPerformed(evt);
+            }
+        });
 
         chkSecundario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chkSecundario.setText("Secundaria");
@@ -362,6 +367,8 @@ public class interfazPrincipal extends javax.swing.JFrame {
         ventana2.textoMedicamento = nombreMedicamento.getText();
         ventana2.textoTipo = tipoMedicamento.getSelectedItem().toString();
         ventana2.textoCantidad = cantidadProducto.getText();
+        ventana2.sucPrincipal = chkPrincipal.getText();
+        ventana2.sucSecundaria = chkSecundario.getText();
         //Radio butttons distribuidor
         ventana2.textoDistribuidor = "";
         if(distribCofarma.isSelected()){
@@ -377,14 +384,16 @@ public class interfazPrincipal extends javax.swing.JFrame {
         }
         //Check boxes
         ventana2.textoSucursal = "";
-        String valorChkPrincipal = chkPrincipal.getText();/*AQUI ME QUEDE*/
-        String valorChkSecundario = chkSecundario.getText();
         if(chkPrincipal.isSelected()==true){
-            ventana2.textoSucursal = ventana2.textoSucursal + "Calle de la Rosa n.28";
+            ventana2.textoSucursal = "Calle de la Rosa n.28";
         }
         if(chkSecundario.isSelected()==true){
-            ventana2.textoSucursal = ventana2.textoSucursal + "Calle Alcazabilla n. 3";
+            ventana2.textoSucursal = "Calle Alcazabilla n. 3";
         }
+        if(chkPrincipal.isSelected()==true && chkSecundario.isSelected()==true){
+            ventana2.textoSucursal = "Calle de la Rosa n.28 y para la situada en Calle Alcazabilla n. 3";
+        }
+        
         
         boolean verificacion = true;
         //Verificacion de datos
@@ -470,6 +479,10 @@ public class interfazPrincipal extends javax.swing.JFrame {
         distribuidoresBtns.add(distribEmpsephar);
         distribuidoresBtns.add(distribCemefar);
     }//GEN-LAST:event_formWindowActivated
+
+    private void chkPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPrincipalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkPrincipalActionPerformed
 
     /**
      * @param args the command line arguments

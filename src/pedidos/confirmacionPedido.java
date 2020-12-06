@@ -163,7 +163,7 @@ public class confirmacionPedido extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel7))
-                        .addGap(0, 513, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(dirPedir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -210,7 +210,7 @@ public class confirmacionPedido extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 394, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -295,19 +295,30 @@ public class confirmacionPedido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_confTipoActionPerformed
     
-    String textoMedicamento, textoTipo, textoCantidad, textoDistribuidor, textoSucursal;
+    String textoMedicamento, textoTipo, textoCantidad, textoDistribuidor, textoSucursal , sucPrincipal, sucSecundaria;
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         confMedicamento.setText(textoMedicamento.substring(0, 1).toUpperCase() + textoMedicamento.substring(1));
         confTipo.setText(textoTipo);
         confCantidad.setText(textoCantidad);
         confDistribuidor.setText(textoDistribuidor);
         confSucursal.setText(textoSucursal);
-        dirPedir.setText("Para la farmacia situada en " + textoSucursal);
-        
+                
         //interfazPrincipal ventana1 = new interfazPrincipal();
-        lblRevisarPedido.setText("Pedido al distribuidor " + textoSucursal);
+        if (sucPrincipal.contains("Principal")) {
+            lblRevisarPedido.setText("Pedido al distribuidor " + sucPrincipal);
+        }
+        if (sucSecundaria.contains("Secundaria")) {
+            lblRevisarPedido.setText("Pedido al distribuidor " + sucSecundaria);
+        }
+        if (sucPrincipal.contains("Principal") && sucSecundaria.contains("Secundaria")) {
+            lblRevisarPedido.setText("Pedido al distribuidor " + sucPrincipal + " y " + sucSecundaria);
+        }
+        
+        //lblRevisarPedido.setText("Pedido al distribuidor " + sucPrincipal);
+        //lblRevisarPedido.setText("Pedido al distribuidor " + sucPrincipal + " y " + sucSecundaria);
+        
         medPedir.setText(textoCantidad + " Unidades del " + textoTipo + " " + textoMedicamento);
-        confSucursal.setText(textoSucursal);
+        dirPedir.setText("Para la farmacia situada en " + textoSucursal);
         
     }//GEN-LAST:event_formWindowActivated
 
