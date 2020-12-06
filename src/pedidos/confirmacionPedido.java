@@ -17,16 +17,9 @@ public class confirmacionPedido extends javax.swing.JFrame {
     public confirmacionPedido() {
         initComponents();
         this.setLocationRelativeTo(null);
-        interfazPrincipal ventana1 = new interfazPrincipal();
-        lblRevisarPedido.setText("Pedido al distribuidor " + ventana1.textoDistribuidor);
-        medPedir.setText(ventana1.textoCantidad + " Unidades del " + ventana1.textoTipo + " " + ventana1.textoMedicamento);
-        dirPedir.setText("Para la farmacia situada en ");
-        confMedicamento.setText(ventana1.textoMedicamento);
-        confTipo.setText(ventana1.textoTipo);
-        confCantidad.setText(ventana1.textoCantidad);
-        confDistribuidor.setText(ventana1.textoDistribuidor);
-        confMedicamento.setText(ventana1.textoMedicamento);
-        confSucursal.setText(ventana1.textoSucursalP + " y " + ventana1.textoSucursalS);
+        
+        
+        
         
         
     }
@@ -59,19 +52,25 @@ public class confirmacionPedido extends javax.swing.JFrame {
         dirPedir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblRevisarPedido.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblRevisarPedido.setText("Pedido al distribuidor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(lblRevisarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblRevisarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,24 +159,25 @@ public class confirmacionPedido extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
                         .addComponent(jButton1)
-                        .addGap(37, 37, 37)
-                        .addComponent(jButton2))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(confSucursal, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                        .addComponent(confDistribuidor, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(confCantidad, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(confTipo, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(confMedicamento, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(confSucursal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+                    .addComponent(confDistribuidor)
+                    .addComponent(confCantidad)
+                    .addComponent(confTipo)
+                    .addComponent(confMedicamento, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(32, 32, 32))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(medPedir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dirPedir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(dirPedir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(medPedir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -203,15 +203,15 @@ public class confirmacionPedido extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(medPedir, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(medPedir, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dirPedir, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addGap(25, 25, 25))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -259,6 +259,22 @@ public class confirmacionPedido extends javax.swing.JFrame {
     private void confTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_confTipoActionPerformed
+    
+    String textoMedicamento, textoTipo, textoCantidad, textoDistribuidor, textoSucursal;
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        confMedicamento.setText(textoMedicamento.substring(0, 1).toUpperCase() + textoMedicamento.substring(1));
+        confTipo.setText(textoTipo);
+        confCantidad.setText(textoCantidad);
+        confDistribuidor.setText(textoDistribuidor);
+        confSucursal.setText(textoSucursal);
+        dirPedir.setText("Para la farmacia situada en " + textoSucursal);
+        
+        //interfazPrincipal ventana1 = new interfazPrincipal();
+        lblRevisarPedido.setText("Pedido al distribuidor " + textoSucursal);
+        medPedir.setText(textoCantidad + " Unidades del " + textoTipo + " " + textoMedicamento);
+        confSucursal.setText(textoSucursal);
+        
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

@@ -14,14 +14,6 @@ import java.awt.Color;
 
 public class interfazPrincipal extends javax.swing.JFrame {
 
-    public static String textoMedicamento = "";
-    public static String textoTipo = "";
-    public static String textoCantidad = "";
-    public static String textoDistribuidor = "";
-    public static String textoSucursalP = "";
-    public static String textoSucursalS = "";
-    
-    
     
     
     //Codigo para borrar campos del formularios
@@ -34,28 +26,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
         chkSecundario.setSelected(false);
     }
     
-    public void distribCofarmaSelec(){
-        if(distribCofarma.isSelected()){
-            distribEmpsephar.setSelected(false);
-            distribCemefar.setSelected(false);
-        }
-    }
-    
-    public void distribEmpsepharSelec(){
-        if(distribEmpsephar.isSelected()){
-            distribCofarma.setSelected(false);
-            distribCemefar.setSelected(false);
-        }
-    }
-    
-    public void distribCemefarSelec(){
-        if(distribCemefar.isSelected()){
-            distribCofarma.setSelected(false);
-            distribEmpsephar.setSelected(false);
-        }
-    }
-
-    /**
+        /**
      * Creates new form interfazPrincipal
      */
     public interfazPrincipal() {
@@ -92,6 +63,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         chkPrincipal = new javax.swing.JCheckBox();
         chkSecundario = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -107,6 +79,11 @@ public class interfazPrincipal extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         nombreMedicamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,6 +215,13 @@ public class interfazPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -261,12 +245,15 @@ public class interfazPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(nombreMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tipoMedicamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(borrarCampos)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(tipoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(borrarCampos)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton1))
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cantidadProducto, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 60, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -297,7 +284,8 @@ public class interfazPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(borrarCampos)
-                    .addComponent(confirmarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirmarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(12, 12, 12))
         );
 
@@ -305,21 +293,47 @@ public class interfazPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void distribCemefarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribCemefarActionPerformed
-        distribCemefarSelec();
+        
     }//GEN-LAST:event_distribCemefarActionPerformed
 
     private void confirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarPedidoActionPerformed
-        //Obtener texto del medicamento
-        textoMedicamento = nombreMedicamento.getText();
-        textoTipo = String.valueOf(tipoMedicamento.getSelectedItem());
-        textoCantidad = cantidadProducto.getText();
-        textoDistribuidor = String.valueOf(distribuidoresBtns.getSelection().getActionCommand());
-        textoSucursalP = chkPrincipal.getText();
-        textoSucursalS = chkSecundario.getText();
-        
+        //Crear un nuevo objeto tipo confirmacionPedido
         confirmacionPedido ventana2 = new confirmacionPedido();
+        //Obtener texto, tipo y cantidad del medicament
+        ventana2.textoMedicamento = nombreMedicamento.getText();
+        ventana2.textoTipo = tipoMedicamento.getSelectedItem().toString();
+        ventana2.textoCantidad = cantidadProducto.getText();
+        //Radio butttons
+        if(distribCofarma.isSelected()){
+            ventana2.textoDistribuidor="Cofarma";
+        }else{
+            if(distribEmpsephar.isSelected()){
+                ventana2.textoDistribuidor="Empsephar";
+            }else{
+                if(distribCemefar.isSelected()){
+                    ventana2.textoDistribuidor="Cemefar";
+                }
+            }
+        }
+        //Check boxes
+        ventana2.textoSucursal = "";
+        if(chkPrincipal.isSelected()==true){
+            ventana2.textoSucursal = ventana2.textoSucursal + "Calle de la Rosa n.28";
+        }
+        if(chkSecundario.isSelected()==true){
+            ventana2.textoSucursal = ventana2.textoSucursal + " y " + "Calle Alcazabilla n. 3";
+        }
+        
+        //Mostrar ventana 2 y ocultar ventana 1
         ventana2.setVisible(true);
         this.setVisible(false);
+        
+        /*textoMedicamento = nombreMedicamento.getText();
+        textoTipo = String.valueOf(tipoMedicamento.getSelectedItem());
+        textoCantidad = cantidadProducto.getText();
+        textoDistribuidor = String.valueOf(distribuidoresBtns.getSelection().getActionCommand());        
+        textoSucursalP = chkPrincipal.getText();
+        textoSucursalS = chkSecundario.getText();*/     
         
     }//GEN-LAST:event_confirmarPedidoActionPerformed
 
@@ -347,7 +361,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cantidadProductoKeyPressed
 
     private void distribCofarmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribCofarmaActionPerformed
-        distribCofarmaSelec();
+        
     }//GEN-LAST:event_distribCofarmaActionPerformed
 
     private void chkSecundarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSecundarioActionPerformed
@@ -356,12 +370,24 @@ public class interfazPrincipal extends javax.swing.JFrame {
 
     private void distribEmpsepharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribEmpsepharActionPerformed
         // TODO add your handling code here:
-        distribEmpsepharSelec();
+        
     }//GEN-LAST:event_distribEmpsepharActionPerformed
 
     private void nombreMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreMedicamentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreMedicamentoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        distribuidoresBtns.add(distribCofarma);
+        distribuidoresBtns.add(distribEmpsephar);
+        distribuidoresBtns.add(distribCemefar);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -408,6 +434,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton distribCofarma;
     private javax.swing.JRadioButton distribEmpsephar;
     private javax.swing.ButtonGroup distribuidoresBtns;
+    private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
