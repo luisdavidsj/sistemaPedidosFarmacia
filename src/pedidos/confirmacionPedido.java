@@ -295,7 +295,7 @@ public class confirmacionPedido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_confTipoActionPerformed
     
-    String textoMedicamento, textoTipo, textoCantidad, textoDistribuidor, textoSucursal , sucPrincipal, sucSecundaria;
+    String textoMedicamento, textoTipo, textoCantidad, textoDistribuidor, textoSucursal, direccion;
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         confMedicamento.setText(textoMedicamento.substring(0, 1).toUpperCase() + textoMedicamento.substring(1));
         confTipo.setText(textoTipo);
@@ -303,19 +303,9 @@ public class confirmacionPedido extends javax.swing.JFrame {
         confDistribuidor.setText(textoDistribuidor);
         confSucursal.setText(textoSucursal);
                 
-        //interfazPrincipal ventana1 = new interfazPrincipal();
-        if (sucPrincipal.contains("Principal")) {
-            lblRevisarPedido.setText("Pedido al distribuidor " + sucPrincipal);
-        }
-        if (sucSecundaria.contains("Secundaria")) {
-            lblRevisarPedido.setText("Pedido al distribuidor " + sucSecundaria);
-        }
-        if (sucPrincipal.contains("Principal") && sucSecundaria.contains("Secundaria")) {
-            lblRevisarPedido.setText("Pedido al distribuidor " + sucPrincipal + " y " + sucSecundaria);
-        }
         
-        //lblRevisarPedido.setText("Pedido al distribuidor " + sucPrincipal);
-        //lblRevisarPedido.setText("Pedido al distribuidor " + sucPrincipal + " y " + sucSecundaria);
+                
+        lblRevisarPedido.setText(direccion);
         
         medPedir.setText(textoCantidad + " Unidades del " + textoTipo + " " + textoMedicamento);
         dirPedir.setText("Para la farmacia situada en " + textoSucursal);

@@ -367,8 +367,8 @@ public class interfazPrincipal extends javax.swing.JFrame {
         ventana2.textoMedicamento = nombreMedicamento.getText();
         ventana2.textoTipo = tipoMedicamento.getSelectedItem().toString();
         ventana2.textoCantidad = cantidadProducto.getText();
-        ventana2.sucPrincipal = chkPrincipal.getText();
-        ventana2.sucSecundaria = chkSecundario.getText();
+        
+
         //Radio butttons distribuidor
         ventana2.textoDistribuidor = "";
         if(distribCofarma.isSelected()){
@@ -394,6 +394,13 @@ public class interfazPrincipal extends javax.swing.JFrame {
             ventana2.textoSucursal = "Calle de la Rosa n.28 y para la situada en Calle Alcazabilla n. 3";
         }
         
+        if (chkPrincipal.isSelected() && !chkSecundario.isSelected()) {
+            ventana2.direccion = "Pedido al distribuidor Principal";
+        }else if (!chkPrincipal.isSelected() && chkSecundario.isSelected()){
+            ventana2.direccion = "Pedido al distribuidor Secundario";
+        }else{
+            ventana2.direccion = "Pedido al distribuidor Principal y secundario";
+        }
         
         boolean verificacion = true;
         //Verificacion de datos
@@ -405,7 +412,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La cantididad de producto no puede estar vacia");
             verificacion = false;
         }
-        if (ventana2.textoCantidad.contains("0")) {
+        if (Integer.parseInt(ventana2.textoCantidad) == 0) {
             JOptionPane.showMessageDialog(null, "La cantididad debe ser positiva");
             verificacion = false;
         }
