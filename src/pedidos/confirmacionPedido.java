@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author luisd
+ * @author Luis David Saenz Jurado Universidad Internacional de la Rioja
+ * Plataformas de desarrollo de software 6/12/2020
  */
 public class confirmacionPedido extends javax.swing.JFrame {
 
@@ -294,7 +295,7 @@ public class confirmacionPedido extends javax.swing.JFrame {
     private void confTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_confTipoActionPerformed
-    
+
     String textoMedicamento, textoTipo, textoCantidad, textoDistribuidor, textoSucursal, direccion;
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         confMedicamento.setText(textoMedicamento.substring(0, 1).toUpperCase() + textoMedicamento.substring(1));
@@ -302,14 +303,12 @@ public class confirmacionPedido extends javax.swing.JFrame {
         confCantidad.setText(textoCantidad);
         confDistribuidor.setText(textoDistribuidor);
         confSucursal.setText(textoSucursal);
-                
-        
-                
+
         lblRevisarPedido.setText(direccion);
-        
+
         medPedir.setText(textoCantidad + " Unidades del " + textoTipo + " " + textoMedicamento);
         dirPedir.setText("Para la farmacia situada en " + textoSucursal);
-        
+
     }//GEN-LAST:event_formWindowActivated
 
     /**

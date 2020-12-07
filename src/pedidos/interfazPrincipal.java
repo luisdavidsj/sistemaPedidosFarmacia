@@ -1,24 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pedidos;
-
-import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author luisd
+ * @author Luis David Saenz Jurado Universidad Internacional de la Rioja
+ * Plataformas de desarrollo de software 6/12/2020
  */
 
 public class interfazPrincipal extends javax.swing.JFrame {
 
-    
-    
     //Codigo para borrar campos del formularios
-    public void limpiarFormulario(){
+    public void limpiarFormulario() {
         nombreMedicamento.setText("");
         tipoMedicamento.setSelectedIndex(0);
         cantidadProducto.setText("");
@@ -26,11 +18,8 @@ public class interfazPrincipal extends javax.swing.JFrame {
         chkPrincipal.setSelected(false);
         chkSecundario.setSelected(false);
     }
-    
 
-        
-    
-        /**
+    /**
      * Creates new form interfazPrincipal
      */
     public interfazPrincipal() {
@@ -226,11 +215,6 @@ public class interfazPrincipal extends javax.swing.JFrame {
 
         chkPrincipal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chkPrincipal.setText("Principal");
-        chkPrincipal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkPrincipalActionPerformed(evt);
-            }
-        });
 
         chkSecundario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chkSecundario.setText("Secundaria");
@@ -357,7 +341,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void distribCemefarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribCemefarActionPerformed
-        
+
     }//GEN-LAST:event_distribCemefarActionPerformed
 
     private void confirmarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarPedidoActionPerformed
@@ -367,44 +351,43 @@ public class interfazPrincipal extends javax.swing.JFrame {
         ventana2.textoMedicamento = nombreMedicamento.getText();
         ventana2.textoTipo = tipoMedicamento.getSelectedItem().toString();
         ventana2.textoCantidad = cantidadProducto.getText();
-        
 
         //Radio butttons distribuidor
         ventana2.textoDistribuidor = "";
-        if(distribCofarma.isSelected()){
-            ventana2.textoDistribuidor="Cofarma";
-        }else{
-            if(distribEmpsephar.isSelected()){
-                ventana2.textoDistribuidor="Empsephar";
-            }else{
-                if(distribCemefar.isSelected()){
-                    ventana2.textoDistribuidor="Cemefar";
+        if (distribCofarma.isSelected()) {
+            ventana2.textoDistribuidor = "Cofarma";
+        } else {
+            if (distribEmpsephar.isSelected()) {
+                ventana2.textoDistribuidor = "Empsephar";
+            } else {
+                if (distribCemefar.isSelected()) {
+                    ventana2.textoDistribuidor = "Cemefar";
                 }
             }
         }
         //Check boxes
         ventana2.textoSucursal = "";
-        if(chkPrincipal.isSelected()==true){
+        if (chkPrincipal.isSelected() == true) {
             ventana2.textoSucursal = "Calle de la Rosa n.28";
         }
-        if(chkSecundario.isSelected()==true){
+        if (chkSecundario.isSelected() == true) {
             ventana2.textoSucursal = "Calle Alcazabilla n. 3";
         }
-        if(chkPrincipal.isSelected()==true && chkSecundario.isSelected()==true){
+        if (chkPrincipal.isSelected() == true && chkSecundario.isSelected() == true) {
             ventana2.textoSucursal = "Calle de la Rosa n.28 y para la situada en Calle Alcazabilla n. 3";
         }
-        
+
         if (chkPrincipal.isSelected() && !chkSecundario.isSelected()) {
             ventana2.direccion = "Pedido al distribuidor Principal";
-        }else if (!chkPrincipal.isSelected() && chkSecundario.isSelected()){
+        } else if (!chkPrincipal.isSelected() && chkSecundario.isSelected()) {
             ventana2.direccion = "Pedido al distribuidor Secundario";
-        }else{
+        } else {
             ventana2.direccion = "Pedido al distribuidor Principal y secundario";
         }
-        
+
         boolean verificacion = true;
         //Verificacion de datos
-        if(ventana2.textoMedicamento.isEmpty()){
+        if (ventana2.textoMedicamento.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El nombre del medicamento no puede estar vacio");
             verificacion = false;
         }
@@ -424,15 +407,13 @@ public class interfazPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Tienes que seleccionar una sucursal");
             verificacion = false;
         }
-        
+
         //Mostrar ventana 2 y ocultar ventana 1
-        if (verificacion==true) {
+        if (verificacion == true) {
             ventana2.setVisible(true);
             this.setVisible(false);
         }
-        
-        
-        
+
     }//GEN-LAST:event_confirmarPedidoActionPerformed
 
     private void borrarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_borrarCamposActionPerformed
@@ -459,7 +440,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_cantidadProductoKeyPressed
 
     private void distribCofarmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribCofarmaActionPerformed
-        
+
     }//GEN-LAST:event_distribCofarmaActionPerformed
 
     private void chkSecundarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkSecundarioActionPerformed
@@ -468,7 +449,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
 
     private void distribEmpsepharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distribEmpsepharActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_distribEmpsepharActionPerformed
 
     private void nombreMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreMedicamentoActionPerformed
@@ -486,10 +467,6 @@ public class interfazPrincipal extends javax.swing.JFrame {
         distribuidoresBtns.add(distribEmpsephar);
         distribuidoresBtns.add(distribCemefar);
     }//GEN-LAST:event_formWindowActivated
-
-    private void chkPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkPrincipalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chkPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
